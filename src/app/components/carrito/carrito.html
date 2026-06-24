@@ -1,0 +1,33 @@
+<div class="carrito-container">
+  <div class="carrito-header">
+    <button class="btn-volver" (click)="volver()">← Volver al Menú</button>
+    <h1>🛒 Tu Pedido</h1>
+  </div>
+
+  <div *ngIf="carrito.length === 0" class="carrito-vacio">
+    <p>🛒 El carrito está vacío</p>
+    <button (click)="volver()" class="btn-menu">Ver Menú</button>
+  </div>
+
+  <div *ngIf="carrito.length > 0">
+    <div class="carrito-items">
+      <div class="item" *ngFor="let item of carrito; let i = index">
+        <div class="item-info">
+          <h3>{{ item.nombre }}</h3>
+          <p class="precio">S/ {{ item.precio }}</p>
+        </div>
+        <div class="item-actions">
+          <button (click)="eliminarItem(i)" class="btn-eliminar">🗑️</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="resumen">
+      <h2>Total: S/ {{ calcularTotal() }}</h2>
+      <div class="botones-accion">
+        <button (click)="enviarPedido()" class="btn-enviar">📨 Enviar a Cocina</button>
+        <button (click)="cancelarPedido()" class="btn-cancelar">❌ Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>

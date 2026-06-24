@@ -1,0 +1,281 @@
+/* ============================================
+   DASHBOARD - ESTILOS COMPLETOS
+   ============================================ */
+
+.dashboard {
+  padding: 25px 30px;
+  background: #f0f2f5;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===== HEADER ===== */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+  background: white;
+  padding: 20px 30px;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.dashboard-header h1 {
+  color: #1a1a2e;
+  font-size: 32px;
+  margin: 0;
+  font-weight: 700;
+}
+
+.dashboard-header h1 span {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  padding: 4px 12px;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.dashboard-header p {
+  color: #666;
+  font-size: 18px;
+  margin: 0;
+}
+
+/* ===== GRID DE MESAS ===== */
+.mesas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 25px;
+}
+
+/* ===== TARJETA DE MESA ===== */
+.mesa {
+  background: white;
+  border-radius: 18px;
+  padding: 28px 20px 22px;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  border: 3px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.mesa:hover:not(.ocupada) {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.10);
+}
+
+/* ===== MESA LIBRE (VERDE) ===== */
+.mesa.libre {
+  border-color: #2ecc71;
+  background: linear-gradient(145deg, #f0fdf4, #ffffff);
+}
+
+.mesa.libre .mesa-info h3 {
+  color: #1a7a3a;
+}
+
+/* ===== MESA OCUPADA (ROJA) ===== */
+.mesa.ocupada {
+  border-color: #e74c3c;
+  background: linear-gradient(145deg, #fdf0ef, #ffffff);
+  opacity: 0.92;
+}
+
+.mesa.ocupada .mesa-info h3 {
+  color: #a93226;
+}
+
+.mesa.ocupada::after {
+  content: '🔴';
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 18px;
+}
+
+/* ===== INFORMACIÓN DE LA MESA ===== */
+.mesa-info {
+  margin-bottom: 18px;
+}
+
+.mesa-info h3 {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.mesa-icono {
+  font-size: 32px;
+  margin-bottom: 5px;
+}
+
+/* ===== ESTADO ===== */
+.mesa-info .estado-libre {
+  color: #2ecc71;
+  font-weight: 700;
+  font-size: 18px;
+  margin: 0;
+  background: rgba(46, 204, 113, 0.12);
+  padding: 4px 16px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.mesa-info .estado-ocupada {
+  color: #e74c3c;
+  font-weight: 700;
+  font-size: 18px;
+  margin: 0;
+  background: rgba(231, 76, 60, 0.12);
+  padding: 4px 16px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* ===== BOTÓN TOMAR PEDIDO ===== */
+.btn-mesa {
+  margin-top: 8px;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.30);
+  letter-spacing: 0.3px;
+}
+
+.btn-mesa:hover {
+  background: linear-gradient(135deg, #5a67d8, #6a3f9a);
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.40);
+}
+
+.btn-mesa:active {
+  transform: scale(0.97);
+}
+
+/* ===== BOTÓN LIBERAR MESA ===== */
+.btn-liberar {
+  margin-top: 8px;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(243, 156, 18, 0.30);
+  letter-spacing: 0.3px;
+}
+
+.btn-liberar:hover {
+  background: linear-gradient(135deg, #e67e22, #d35400);
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(243, 156, 18, 0.40);
+}
+
+.btn-liberar:active {
+  transform: scale(0.97);
+}
+
+/* ===== BOTÓN DESHABILITADO ===== */
+.btn-mesa:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+  opacity: 0.6;
+  box-shadow: none;
+  transform: none !important;
+}
+
+.btn-mesa:disabled:hover {
+  background: #bdc3c7;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 16px;
+  }
+
+  .dashboard-header {
+    padding: 16px 20px;
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 24px;
+  }
+
+  .dashboard-header p {
+    font-size: 15px;
+  }
+
+  .mesas-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+  }
+
+  .mesa {
+    padding: 18px 14px 16px;
+  }
+
+  .mesa-info h3 {
+    font-size: 20px;
+  }
+
+  .mesa-info .estado-libre,
+  .mesa-info .estado-ocupada {
+    font-size: 14px;
+    padding: 3px 12px;
+  }
+
+  .btn-mesa,
+  .btn-liberar {
+    font-size: 14px;
+    padding: 12px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mesas-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .mesa {
+    padding: 14px 10px 12px;
+    border-radius: 14px;
+  }
+
+  .mesa-info h3 {
+    font-size: 17px;
+  }
+
+  .mesa-icono {
+    font-size: 24px;
+  }
+
+  .btn-mesa,
+  .btn-liberar {
+    font-size: 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+  }
+}

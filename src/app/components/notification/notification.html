@@ -1,0 +1,6 @@
+<div *ngIf="notification" class="notification-container">
+  <div class="notification {{ getClass(notification.type) }} animate-slide">
+    <span class="icon">{{ getIcon(notification.type) }}</span>
+    <span class="message">{{ notification.message }}</span>
+  </div>
+</div>

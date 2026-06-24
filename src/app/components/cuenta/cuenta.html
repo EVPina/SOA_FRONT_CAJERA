@@ -1,0 +1,33 @@
+<div class="cuenta-container">
+  <div class="cuenta-header">
+    <button class="btn-volver" (click)="volver()">← Volver</button>
+    <h1>🧾 Cerrar Cuenta</h1>
+  </div>
+
+  <div class="cuenta-info">
+    <p><strong>Mesa:</strong> {{ mesaSeleccionada }}</p>
+    <p><strong>Mozo:</strong> {{ nombreMozo }}</p>
+  </div>
+
+  <div class="productos-consumidos">
+    <h2>Productos consumidos</h2>
+    <div class="item" *ngFor="let item of carrito">
+      <span>{{ item.nombre }}</span>
+      <span>S/ {{ item.precio }}</span>
+    </div>
+    <div class="total">
+      <h3>Total: S/ {{ calcularTotal() }}</h3>
+    </div>
+  </div>
+
+  <div class="metodos-pago">
+    <h2>Método de pago</h2>
+    <button (click)="pagar('efectivo')" class="btn-efectivo">💵 Efectivo</button>
+    <button (click)="pagar('tarjeta')" class="btn-tarjeta">💳 Tarjeta</button>
+    <button (click)="pagar('yape')" class="btn-yape">📱 Yape</button>
+  </div>
+
+  <div *ngIf="mensaje" class="mensaje-exito">
+    {{ mensaje }}
+  </div>
+</div>

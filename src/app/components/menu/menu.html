@@ -1,0 +1,36 @@
+<div class="menu-container">
+  <div class="menu-header">
+    <button class="btn-volver" (click)="volver()">← Volver</button>
+    <h1>📋 Menú del Día</h1>
+  </div>
+
+  <div class="categorias">
+    <button *ngFor="let cat of categorias" 
+            (click)="filtrarPorCategoria(cat)" 
+            class="btn-categoria">
+      {{ cat }}
+    </button>
+  </div>
+
+  <div class="productos-grid">
+    <div class="producto" *ngFor="let producto of productosFiltrados">
+      <div class="producto-info">
+        <h3>{{ producto.nombre }}</h3>
+        <p class="descripcion">{{ producto.descripcion }}</p>
+        <p class="precio">S/ {{ producto.precio }}</p>
+        <p class="stock" [class.sin-stock]="producto.stock === 0">
+          {{ producto.stock > 0 ? '✅ Disponible' : '❌ Sin stock' }}
+        </p>
+      </div>
+      <button (click)="agregarAlPedido(producto)" 
+              [disabled]="producto.stock === 0"
+              class="btn-agregar">
+        🛒 Agregar
+      </button>
+    </div>
+  </div>
+
+  <div class="carrito-flotante" (click)="verCarrito()">
+    🛒 Carrito ({{ carrito.length }})
+  </div>
+</div>

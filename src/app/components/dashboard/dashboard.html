@@ -1,0 +1,42 @@
+<div class="dashboard">
+  <div class="dashboard-header">
+    <h1>👨‍🍳 Bienvenido, Mozo</h1>
+    <p>Selecciona una mesa para tomar el pedido</p>
+  </div>
+  
+  <div class="mesas-grid">
+    <div class="mesa" 
+         *ngFor="let mesa of mesas"
+         [class.ocupada]="mesa.estado === 'ocupada'"
+         [class.libre]="mesa.estado === 'libre'">
+      
+      <div class="mesa-info">
+        <h3>Mesa {{ mesa.numero }}</h3>
+        <p [class.estado-libre]="mesa.estado === 'libre'" 
+           [class.estado-ocupada]="mesa.estado === 'ocupada'">
+          {{ mesa.estado | uppercase }}
+        </p>
+        <div class="mesa-icono">
+          <span *ngIf="mesa.estado === 'libre'">🟢</span>
+          <span *ngIf="mesa.estado === 'ocupada'">🔴</span>
+        </div>
+      </div>
+      
+      <!-- Botón para liberar mesa (solo si está ocupada) -->
+      <button 
+        *ngIf="mesa.estado === 'ocupada'"
+        (click)="liberarMesa(mesa)" 
+        class="btn-liberar">
+        🔓 Liberar Mesa
+      </button>
+      
+      <!-- Botón para tomar pedido (solo si está libre) -->
+      <button 
+        *ngIf="mesa.estado === 'libre'"
+        (click)="seleccionarMesa(mesa)" 
+        class="btn-mesa">
+        📋 Tomar pedido
+      </button>
+    </div>
+  </div>
+</div>
